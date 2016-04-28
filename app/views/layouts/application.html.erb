@@ -15,11 +15,25 @@
       <%= link_to image_tag('creamery_title.png'), home_path %>
     </div>
     <%= render :partial => "partials/nav" %>
+
     
     <div class="row">
       <div class="small-12 columns" id="main_content">
+        <div class="small-9 columns" id="main_content">
+        </div>
+        <div class="small-3 columns" id="main_content">
+          <div id="login">
+            <% if logged_in? %>
+              <%= link_to 'Logout', logout_path %>
+              <br>[<%= current_user.proper_name %>:<%= current_user.role %>]
+            <% else %>
+              <%= link_to 'Login', login_path %>
+            <% end %>
+          </div>
+        </div>
         <%= render :partial => "partials/flash" %>
         <%= yield %>
+
       </div>
     </div>
     <footer>
