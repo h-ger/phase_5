@@ -25,7 +25,7 @@ module CreameryHelpers
 
       # test to see if the id in question is in the set of valid ids 
       unless all_active.include?(self.send(attr_id))
-        self.errors.add(attr_id.to_sym, "is not active in the system")
+        self.errors.add(attr_id.to_sym, "is not active at the creamery")
       end
     end
   end

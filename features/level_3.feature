@@ -50,11 +50,11 @@ Feature: Manage assignments
     And I select "Wakeley, Heather" from "assignment_employee_id"
     And I select "2" from "assignment_pay_level"
     And I press "Create Assignment"
-    Then I should see "is not an active store at the creamery"
+    Then I should see "is not active at the creamery"
       
   Scenario: Creating a new assignment fails without employee
     When I go to the new assignment page
     And I select "CMU" from "assignment_store_id"
     And I select "2" from "assignment_pay_level"
     And I press "Create Assignment"
-    Then I should see "is not an active employee at the creamery"
+    Then I should see "is not active at the creamery"
