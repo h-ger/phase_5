@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def role
-    "#{employee.role}"
+    "#{employee.role}" if !employee.nil?
   end
   
   private
