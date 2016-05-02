@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_login, except: [:new, :create]
+  authorize_resource
 
   def new
     @user = User.new
@@ -7,6 +8,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user)
+  end
+
+  def show
   end
 
   def create

@@ -3,7 +3,6 @@ class EmployeesController < ApplicationController
   authorize_resource
   
   def index
-
     @active_employees = Employee.active.alphabetical.paginate(page: params[:page]).per_page(10)
     @inactive_employees = Employee.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
   end

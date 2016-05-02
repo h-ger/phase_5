@@ -5,23 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>A &amp; M Creamery</title>
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= stylesheet_link_tag    "application", :media => "all"%>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <div id="title_area">
-      <%= link_to image_tag('creamery_title.png'), home_path %>
+    <div class="row">
+      <div id="title_area">
+        <%= link_to image_tag('creamery_title.png'), home_path %>
+      </div>
     </div>
-    <%= render :partial => "partials/nav" %>
+    <% if logged_in? && current_user.role == "admin" %>
+      <%= render :partial => "partials/admin_nav" %>
+    <% elsif logged_in? && current_user.role == "manager" %>
+      <%= render :partial => "partials/manager_nav" %>
+    <% elsif logged_in? && current_user.role == "employee" %>
+      <%= render :partial => "partials/employee_nav" %>
+    <% else%>
+      <%= render :partial => "partials/general_nav" %>
+    <% end %>
+    
+
+    <div class="row">
+      <div class="small-2 columns"></div>
+      <div class="small-8 columns">
+        <%= render :partial => "partials/flash" %>
+      </div>
+      <div class="small-2 columns"></div>
+    </div>
+
 
     
     <div class="row">
       <div class="small-12 columns" id="main_content">
-        <div class="small-9 columns" id="main_content">
-        </div>
-        <div class="small-3 columns" id="main_content">
+        <div class="small-8 columns" id="main_content"></div>
+        <div class="small-4 columns" id="main_content">
           <div id="login">
             <% if logged_in? %>
               <%= link_to 'Logout', logout_path %>
@@ -31,11 +50,12 @@
             <% end %>
           </div>
         </div>
-        <%= render :partial => "partials/flash" %>
         <%= yield %>
-
       </div>
     </div>
+
+
+        
     <footer>
       <div class="small-12 columns" id="footer">
         <%= render partial: 'partials/footer' %>

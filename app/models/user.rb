@@ -24,11 +24,11 @@ class User < ActiveRecord::Base
   end
 
   def proper_name
-    "#{self.employee.proper_name}"
+    "#{employee.proper_name}"
   end
 
   def role
-    "#{self.employee.role}"
+    "#{employee.role}"
   end
   
   private
