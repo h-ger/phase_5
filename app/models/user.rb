@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def proper_name
-    "#{employee.proper_name}"
+    "#{employee.first_name} #{employee.last_name}"
   end
 
   def role

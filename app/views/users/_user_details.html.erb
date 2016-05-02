@@ -1,0 +1,15 @@
+<h3>
+  <b>Name</b>: <%= current_user.employee.proper_name %>
+</h3><br>
+
+<p>
+  <b>Email</b>: <%= mail_to current_user.email, current_user.email, encode: "javascript" %>
+</p>
+
+<p>
+  <b>Role</b>: <%= current_user.role.capitalize %>
+</p>
+
+<p>
+  <li><%= link_to "Employment Detail", employee_path(@employee) %></li>
+</p>

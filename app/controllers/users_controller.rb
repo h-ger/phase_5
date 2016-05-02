@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @employee = current_user.employee
   end
 
   def create
