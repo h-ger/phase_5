@@ -9,7 +9,7 @@
           <%= link_to "Stores", stores_path %>
           <ul class="dropdown">
             <li><%= link_to "Store List", stores_path %></li>
-            <li><%= link_to "My Store", store_path(current_user.employee.store) %></li>
+            <li><%= link_to "My Store", store_path(current_user.employee.current_assignment.store) %></li>
           </ul>
         </li>
 

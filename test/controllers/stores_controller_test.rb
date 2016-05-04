@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class StoresControllerTest < ActionController::TestCase
+
   setup do
     create_stores
   end

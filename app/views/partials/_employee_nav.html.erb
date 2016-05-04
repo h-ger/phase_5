@@ -9,7 +9,7 @@
             <%= link_to "Stores", stores_path %>
             <ul class="dropdown">
               <li><%= link_to "Store List", stores_path %></li>
-              <li><%= link_to "My Store", store_path(current_user.employee.store) %></li>
+              <li><%= link_to "My Store", store_path(current_user.employee.current_assignment.store) %></li>
             </ul>
           </li>
           <li><%= link_to "Jobs", jobs_path %></li>
@@ -17,7 +17,7 @@
           <li><%= link_to "My Info", employee_path(current_user.employee) %></li>
           <li><%= link_to "My Assignments", assignments_path %></li>
           <li><%= link_to "My Shifts", shifts_path %></li>
-          <li><%= link_to "My Account", user_path %></li>
+          <li><%= link_to "My Account", user_path(current_user) %></li>
       </ul>
     </section>
   </nav>

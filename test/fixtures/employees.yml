@@ -6,8 +6,8 @@ one:
   ssn: MyString
   date_of_birth: 2016-01-29
   phone: MyString
-  role: MyString
-  active: false
+  role: "admin"
+  active: true
 
 two:
   first_name: MyString
