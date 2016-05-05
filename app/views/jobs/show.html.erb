@@ -18,4 +18,6 @@
 </div>
 
 <!-- Add buttons to list all, edit project or destroy assignment -->
-<%= render partial: "partials/object_options", locals: {model_name: "job", object: @job}  %>
+<% if logged_in? && current_user.role == "admin" %>
+  <%= render partial: "partials/object_options", locals: {model_name: "job", object: @job}  %>
+<% end %>

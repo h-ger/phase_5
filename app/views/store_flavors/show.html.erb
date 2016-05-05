@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="small-7 columns">
+    <p>
+      <b>Store</b>: <%= link_to @store_flavor.store.name, store_path(@store_flavor.store) %>
+    </p>
+
+    <p>
+      <b>Flavor</b>: <%= link_to @store_flavor.flavor.name, flavor_path(@store_flavor.flavor) %>
+    </p>
+
+  </div>
+  <div class="small-5 columns">
+    &nbsp;
+  </div>
+</div>
+
+<!-- Add buttons to list all, edit project or destroy assignment -->
+<% if logged_in? && current_user.role != "employee" %>
+  <%= render partial: "partials/object_options", locals: {model_name: "store_flavor", object: @store_flavor}  %>
+<% end %>

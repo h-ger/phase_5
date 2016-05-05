@@ -5,6 +5,13 @@ class ShiftsController < ApplicationController
   def index
     @completed_shifts = Shift.completed.chronological.paginate(page: params[:page]).per_page(10)
     @incomplete_shifts = Shift.incomplete.chronological.paginate(page: params[:page]).per_page(10)
+    if logged_in? && current_user.role == "manager"
+      @my_store_incomplete_shifts = Shift.incomplete.for_store(current_user.employee.current_assignment.store_id).chronological.paginate(page: params[:page]).per_page(10)
+      @my_store_completed_shifts = Shift.completed.for_store(current_user.employee.current_assignment.store_id).chronological.paginate(page: params[:page]).per_page(10)
+    elsif logged_in? && current_user.role == "employee"
+      @my_past_shifts = Shift.past.for_employee(current_user.employee_id).chronological.paginate(page: params[:page]).per_page(10)
+      @my_upcoming_shifts = Shift.upcoming.for_employee(current_user.employee_id).chronological.paginate(page: params[:page]).per_page(10)
+    end
   end
 
   def show
@@ -45,7 +52,7 @@ class ShiftsController < ApplicationController
     @shift = Shift.find(params[:id])
   end
 
-  def assignment_params
+  def shift_params
     params.require(:shift).permit(:assignment_id, :date, :start_time, :end_time, :note)
   end
 end

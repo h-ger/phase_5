@@ -1,0 +1,3 @@
+<% unless @my_past_shifts.empty? %>
+  <%= render partial: "shift_list", locals: {shifts: @my_past_shifts, state: 'past'}%>
+<% end %>

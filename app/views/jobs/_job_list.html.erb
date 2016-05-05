@@ -7,7 +7,9 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>&nbsp;</th>
+        <% if logged_in? && current_user.role == "admin" %>
+          <th>&nbsp;</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -16,8 +18,10 @@
           <td><%= link_to job.name, job_path(job) %></td>
           <td><%= job.description %></td>
           <td>
-            <%= link_to(edit_job_path(job), class: 'button tiny radius warning') do %>
+            <% if logged_in? && current_user.role == "admin" %>
+              <%= link_to(edit_job_path(job), class: 'button tiny radius warning') do %>
               &nbsp;Edit&nbsp;
+              <% end %>
             <% end %>
           </td>
         </tr>

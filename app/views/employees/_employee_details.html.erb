@@ -5,9 +5,11 @@
   </h4>
 </p>
 
-<p>
-  <b>SSN:</b> <%= @employee.ssn %>
-</p>
+<% if logged_in? && current_user.role == "admin" %>
+    <p>
+      <b>SSN:</b> <%= @employee.ssn %>
+    </p>
+<% end %>
 
 <p>
   <b>Date of Birth:</b> <%= @employee.date_of_birth.strftime("%m/%d/%y") %>

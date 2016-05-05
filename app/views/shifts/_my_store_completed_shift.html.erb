@@ -1,0 +1,3 @@
+<% unless @my_store_completed_shifts.empty? %>
+  <%= render partial: "shift_list", locals: {shifts: @my_store_completed_shifts, state: 'completed'}%>
+<% end %>

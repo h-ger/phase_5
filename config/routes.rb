@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :jobs
   resources :flavors
   resources :shifts
+  resources :store_flavors
   get 'user/edit' => 'users#edit', :as => :edit_current_user
   get 'signup' => 'users#new', :as => :signup
   get 'login' => 'sessions#new', :as => :login

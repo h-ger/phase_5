@@ -45,7 +45,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
   end
 
-  def assignment_params
+  def job_params
     params.require(:job).permit(:name, :description, :active)
   end
 end

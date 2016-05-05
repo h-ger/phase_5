@@ -8,6 +8,7 @@ class StoreFlavor < ActiveRecord::Base
   validate :store_is_active_in_system, on: :create
   validate :flavor_is_active_in_system, on: :create
 
+
   private  
   
   def store_is_active_in_system

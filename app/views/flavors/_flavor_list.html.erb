@@ -6,7 +6,9 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>&nbsp;</th>
+        <% if logged_in? && current_user.role == "admin" %>
+          <th>&nbsp;</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -14,8 +16,10 @@
         <tr>
           <td><%= link_to flavor.name,flavor_path(flavor) %></td>
           <td>
-            <%= link_to(edit_flavor_path(flavor), class: 'button tiny radius warning') do %>
-              &nbsp;Edit&nbsp;
+            <% if logged_in? && current_user.role == "admin" %>
+              <%= link_to(edit_flavor_path(flavor), class: 'button tiny radius warning') do %>
+                &nbsp;Edit&nbsp;
+              <% end %>
             <% end %>
           </td>
         </tr>

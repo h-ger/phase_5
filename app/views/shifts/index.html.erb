@@ -1,0 +1,16 @@
+<% if logged_in? && current_user.role == "admin" %>
+    <%= render partial: "partials/index_structure_2", locals: {model_name: "shift", 
+                                                         primary: "incomplete_shift", 
+                                                         secondary: "completed_shift",
+                                                         sidebar: nil} %>
+<% elsif logged_in? && (current_user.role == "manager")%>
+    <%= render partial: "partials/index_structure_2", locals: {model_name: "shift", 
+                                                             primary: "my_store_incomplete_shift", 
+                                                             secondary: "my_store_completed_shift",
+                                                             sidebar: nil} %>
+<% elsif logged_in? && (current_user.role == "employee")%>
+    <%= render partial: "partials/index_structure_2", locals: {model_name: "shift", 
+                                                             primary: "my_upcoming_shift", 
+                                                             secondary: "my_past_shift",
+                                                             sidebar: nil} %>
+<%end%>

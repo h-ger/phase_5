@@ -1,0 +1,16 @@
+<h3>Served At</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Store</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stores_offered.each do |store| %>
+      <tr>
+        <td><%= link_to store.name, store_path(store) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @assignments, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>

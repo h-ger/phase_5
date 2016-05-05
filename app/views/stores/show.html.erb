@@ -1,6 +1,33 @@
 <div class="row">
   <div class="small-7 columns">
     <%= render partial: "store_details" %>
+    <p>
+      <h3>Serving</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Flavor</th>
+            <% if logged_in? && current_user.role != "employee" %>
+              <th>&nbsp;</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @flavors_offered.each do |flavor| %>
+            <tr>
+              <td><%= link_to flavor.name, flavor_path(flavor) %></td>
+              <td>
+              <% if logged_in? && current_user.role != "employee" %>
+                <%= link_to(edit_store_flavor_path(flavor), class: 'button tiny radius warning') do %>
+                  &nbsp;Edit&nbsp;
+                <% end %>
+              <% end %>
+            </td> 
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </p>
   </div>
   <div class="small-5 columns">
     <%= render partial: "assigned_employees" unless @current_assignments.empty?%>
@@ -8,4 +35,7 @@
 </div>
 
 <!-- Add buttons to list all, edit project or destroy object -->
-<%= render partial: "partials/object_options", locals: {model_name: "store", object: @store}  %>
+<% if logged_in? && current_user.role == "admin" %>
+    <%= render partial: "partials/object_options", locals: {model_name: "store", object: @store}  %>
+<% end %>
+

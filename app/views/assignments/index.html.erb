@@ -3,12 +3,7 @@
                                                          primary: "current_assignments", 
                                                          secondary: "past_assignments",
                                                          sidebar: nil} %>
-<% elsif logged_in? && current_user.role == "manager" %>
-    <%= render partial: "partials/index_structure_2", locals: {model_name: "assignment", 
-                                                         primary: "store_current_assignments", 
-                                                         secondary: "store_past_assignments",
-                                                         sidebar: nil} %>
-<% elsif logged_in? && current_user.role == "employee" %>
+<% elsif logged_in? && (current_user.role == "employee" || current_user.role == "manager")%>
     <%= render partial: "partials/index_structure_2", locals: {model_name: "assignment", 
                                                              primary: "my_current_assignments", 
                                                              secondary: "my_past_assignments",

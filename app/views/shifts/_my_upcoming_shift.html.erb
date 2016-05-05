@@ -1,0 +1,3 @@
+<% unless @my_upcoming_shifts.empty? %>
+  <%= render partial: "shift_list", locals: {shifts: @my_upcoming_shifts, state: 'upcoming'}%>
+<% end %>

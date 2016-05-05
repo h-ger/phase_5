@@ -46,7 +46,7 @@ class FlavorsController < ApplicationController
     @flavor = Flavor.find(params[:id])
   end
 
-  def assignment_params
+  def flavor_params
     params.require(:flavor).permit(:name,:active)
   end
 end

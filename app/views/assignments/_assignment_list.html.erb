@@ -12,7 +12,9 @@
         <% if state == 'past' %>
           <th>End Date</th>
         <% end %>
-        <th>&nbsp;</th>
+        <% if logged_in? && current_user.role == "admin" %>
+          <th>&nbsp;</th>
+        <% end %>
       </tr>
     </thead>
       <tbody>
@@ -26,8 +28,10 @@
               <td><%= assignment.end_date.strftime("%m/%d/%y") %></td>
             <% end %>
             <td>
-              <%= link_to(edit_assignment_path(assignment), class: 'button tiny radius warning') do %>
-                &nbsp;Edit&nbsp;
+              <% if logged_in? && current_user.role == "admin" %>
+                <%= link_to(edit_assignment_path(assignment), class: 'button tiny radius warning') do %>
+                  &nbsp;Edit&nbsp;
+                <% end %>
               <% end %>
             </td> 
           </tr>

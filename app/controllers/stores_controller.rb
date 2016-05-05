@@ -4,11 +4,12 @@ class StoresController < ApplicationController
   
   def index
     @active_stores = Store.active.alphabetical.paginate(page: params[:page]).per_page(10)
-    @inactive_stores = Store.inactive.alphabetical.paginate(page: params[:page]).per_page(10)  
+    @inactive_stores = Store.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
   def show
     @current_assignments = @store.assignments.current.by_employee.paginate(page: params[:page]).per_page(8)
+    @flavors_offered = @store.flavors
   end
 
   def new
